@@ -1,6 +1,6 @@
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import Log_in from './Pages/Log_in';
-import Sign_up from './Pages/Sign_up';
+import Sign_up from './Pages/sign_up';
 
 const App = () => {
 
