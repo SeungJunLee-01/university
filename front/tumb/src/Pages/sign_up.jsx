@@ -22,11 +22,15 @@ const sign_up = () => {
       </div>
       <div className='userID'>
           <label for = "userID">아이디:</label>
-          <input type = "text" id = "userID" name ="userID"/>
+          <input type = "number" id = "userID" name ="userID"/>
       </div>
       <div className='userPW'>
           <label for = "userPW">비밀번호:</label>
           <input type = "password" id = "password" name ="password"/>
+      </div>
+       <div className='originNum'>
+          <label for = "originNum">주민등록번호 앞자리:</label>
+          <input type = "number" id = "originNum" name ="originNum"/>
       </div>
       <p>성별:
         <input type="radio" id='male' name='gender' value='male'/>
