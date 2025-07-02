@@ -33,5 +33,5 @@ const Profile = () => {
 
     );
 };
-
+//파일명 변경이 안올라가서 아무거나 추가한 문구
 export default Profile;
