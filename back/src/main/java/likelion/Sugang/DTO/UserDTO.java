@@ -1,6 +1,5 @@
 package likelion.Sugang.DTO;
 
-import jakarta.persistence.Column;
 import lombok.*;
 
 @Builder
@@ -9,10 +8,11 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDTO {
-    private Long user_id;
-    private String user_name;
-    private Long user_birth;
-    private String user_sex;
-    private String user_department;
-    private Long type;
+    private Integer id;
+    private String name;
+    private Integer birth;
+    private String sex;
+    private String student_department;
+    private String status;
+    private Integer type;
 }

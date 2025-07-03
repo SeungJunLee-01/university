@@ -12,13 +12,4 @@ import java.util.List;
 public class UserDAO {
     private final UserRepository userRepository;
 
-    public UserDTO adduser(String user_name,Long user_birth,String user_sex,String user_department,Long type) {
-        return userRepository.save(UserEntity.builder()
-                .user_name(user_name)
-                .user_birth(user_birth)
-                .user_sex(user_sex)
-                .user_department(user_department)
-                .type(type)
-                .build()).toDTO();
-    }
 }

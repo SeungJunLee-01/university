@@ -14,30 +14,34 @@ import lombok.*;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
+    private Integer id;
 
     @Column
-    private String user_name;
+    private String name;
 
     @Column
-    private Long user_birth;
+    private Integer birth;
 
     @Column
-    private String user_sex;
+    private String sex;
 
     @Column
-    private String user_department;
+    private String student_department;
 
     @Column
-    private Long type;
+    private String status;
+
+    @Column
+    private Integer type;
 
     public UserDTO toDTO(){
         return UserDTO.builder()
-                .user_id(user_id)
-                .user_name(user_name)
-                .user_birth(user_birth)
-                .user_sex(user_sex)
-                .user_department(user_department)
+                .id(id)
+                .name(name)
+                .birth(birth)
+                .sex(sex)
+                .student_department(student_department)
+                .status(status)
                 .type(type)
                 .build();
     }
