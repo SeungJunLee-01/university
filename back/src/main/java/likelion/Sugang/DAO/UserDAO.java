@@ -10,6 +10,6 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class UserDAO {
-    private final UserRepository userRepository;
+    //private final UserRepository userRepository;
 
 }

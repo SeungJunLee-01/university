@@ -1,6 +1,5 @@
 package likelion.Sugang.DTO;
 
-import jakarta.persistence.Column;
 import lombok.*;
 
 @Builder
@@ -9,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Student_infoEntity {
+public class Student_infoDTO {
 
     private Integer status;
     private Integer id;
