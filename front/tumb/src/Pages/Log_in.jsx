@@ -20,8 +20,8 @@ function Log_in() {
             alert('아이디 또는 비밀번호가 틀렸습니다.');
     }
 
-    const sign_up_Link = () => {
-        navigate('./sign_up');
+    const SignUp_Link = () => {
+        navigate('./SignUp');
     }
 
     // Enter 키 처리 함수 추가
@@ -68,7 +68,7 @@ function Log_in() {
                         <span>또는</span>
                     </div>
                     
-                    <button className="sign_up_link" onClick={sign_up_Link}>회원가입</button>
+                    <button className="sign_up_link" onClick={SignUp_Link}>회원가입</button>
                 </div>
                 
                 <div className="login-footer">
