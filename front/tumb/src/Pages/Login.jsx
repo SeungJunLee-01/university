@@ -32,6 +32,7 @@ function Login() {
             alert('아이디 또는 비밀번호가 틀렸습니다.');
     }
 
+    //로그인 성공시 프로필로 넘기기, 추후 교수 페이지로 넘어가는 것도 할 것
     const SignUp_Link = () => {
         navigate('./SignUp');
     }
@@ -48,7 +49,6 @@ function Login() {
             <div className="loginbox">
                 <div className="login-header">
                     <h1>대학교 포털 시스템</h1>
-                    <p>로그인</p>
                 </div>
                 
                 <div className="login-form">
@@ -58,7 +58,7 @@ function Login() {
                             type="text"
                             value={inputId}
                             onChange={(e) => setInputid(e.target.value)}
-                            placeholder="학번을 입력하세요."
+                            placeholder="학번 또는 교번을 입력하세요."
                             className="login-input"
                         />
                     </div>
@@ -81,12 +81,6 @@ function Login() {
                     </div>
                     
                     <button className="sign_up_link" onClick={SignUp_Link}>회원가입</button>
-                </div>
-                
-                <div className="login-footer">
-                    <a href="#">비밀번호 찾기</a>
-                    <span>|</span>
-                    <a href="#">학번 찾기</a>
                 </div>
             </div>
         </div>
