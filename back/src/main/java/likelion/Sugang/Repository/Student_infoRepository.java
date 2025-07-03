@@ -1,6 +1,6 @@
 package likelion.Sugang.Repository;
 
-import likelion.Sugang.DTO.Student_infoEntity;
+import likelion.Sugang.Entity.Student_infoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

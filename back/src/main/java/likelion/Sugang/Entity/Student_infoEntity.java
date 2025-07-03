@@ -21,5 +21,4 @@ public class Student_infoEntity {
     private Integer status;
     @Column
     private Integer id;
-
 }
