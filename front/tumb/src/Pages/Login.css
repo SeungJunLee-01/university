@@ -1,0 +1,207 @@
+/* 전체 컨테이너 스타일 */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+}
+
+/* 로그인 박스 스타일 */
+.loginbox {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* 애니메이션 효과 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 로그인 헤더 */
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-header h1 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.login-header p {
+    color: #666;
+    font-size: 16px;
+}
+
+/* 입력 그룹 스타일 */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+/* 아이콘 스타일 */
+.icon-user::before {
+    content: "👤";
+    font-size: 18px;
+}
+
+.icon-lock::before {
+    content: "🔒";
+    font-size: 18px;
+}
+
+/* 입력 필드 스타일 */
+.login-input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.login-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.login-input::placeholder {
+    color: #999;
+}
+
+/* 로그인 버튼 스타일 */
+.login_button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.login_button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.login_button:active {
+    transform: translateY(0);
+}
+
+/* 구분선 스타일 */
+.divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+.divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #e0e0e0;
+}
+
+.divider span {
+    background: white;
+    padding: 0 15px;
+    color: #999;
+    position: relative;
+    font-size: 14px;
+}
+
+/* 회원가입 버튼 스타일 */
+.sign_up_link {
+    width: 100%;
+    padding: 15px;
+    background: white;
+    color: #667eea;
+    border: 2px solid #667eea;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sign_up_link:hover {
+    background: #667eea;
+    color: white;
+}
+
+/* 푸터 링크 스타일 */
+.login-footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+.login-footer a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-footer a:hover {
+    color: #667eea;
+    text-decoration: underline;
+}
+
+.login-footer span {
+    margin: 0 10px;
+    color: #ccc;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+    .loginbox {
+        padding: 30px 20px;
+    }
+    
+    .login-header h1 {
+        font-size: 24px;
+    }
+    
+    .login-input {
+        font-size: 14px;
+        padding: 12px 12px 12px 40px;
+    }
+    
+    .login_button {
+        font-size: 16px;
+    }
+}
