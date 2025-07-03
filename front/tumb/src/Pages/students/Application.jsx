@@ -1,16 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Application.css';
 
 const Application = () => {
     const {stu_num, stu_name, stu_gen} = {stu_num: 566, stu_name: 'Lee', stu_gen: '남'};    //임시 학생 정보
     const {sub_num_front, sub_num_back, sub_name, sub_score} = {sub_num_front: 11111, sub_num_back: 11, sub_name: '교과목명', sub_score: 3};
 
-    const [subNumFront, setSubNumFront] = useState(0);  //교과목 코드
-    const [subNumBack, setSubNumBack] = useState(0);
+    const [subNumFront, setSubNumFront] = useState('');  //교과목 코드
+    const [subNumBack, setSubNumBack] = useState('');
 
-    //수강신청 기능, 서버에 올리는 기능 넣을 것
-    const applicate = () => {
-        alert('수강신청이 완료되었습니다!');
+    //Profile 파일에서 로컬에 저장한 학생 정보들 가져오기
+    // const studentInfo = JSON.parse(localStorage.getItem('studentInfo'));
+    // const {stu_num, stu_name, stu_gen} = {
+    //     stu_num: studentInfo.num,
+    //     stu_name: studentInfo.name,
+    //     stu_gen: studentInfo.gender
+    // };
+
+    
+    //신청 가능한 교과목들 정보 들고오기
+    const ableSubject = async () => {
+        try{
+            const ableSubjectData = await fetch('주소 받아쓰기', {
+                methode: "GET",
+                headers: {
+                    "Content-Type" : "링크",
+                },
+            });
+            const ableSubjectResult = await ableSubjectData.json();
+
+            if(ableSubjectData.status === 200) {
+                console.log(ableSubjectResult);
+                
+            } else{
+                alert('신청 가능한 교과목 정보를 가져오지 못했습니다.');
+            }
+        }
+        catch(error) {
+            console.error(error);
+        }
+    };
+
+
+    //신청 버튼 기능
+    const subApplicate = () => {
+        subNumFront === ableSubject.subNum ?
+        //신청 가능한 과목의 정보를 학생이 신청한 과목 리스트로 넘겨야 함
+        alert('신청 완료!') :
+        alert('과목 코드를 다시 확인해주세요.');
+    };
+
+
+
+    //수강신청 취소 DELETE api로 만들어야 함
+    const sub_cancel = () => {
+
+        alert('수강신청이 취소 되었습니다.');
     }
 
     return(
@@ -51,7 +95,6 @@ const Application = () => {
                                             maxLength="5"
                                             value={subNumFront}
                                             onInput={(e) => setSubNumFront(e.target.value = e.target.value.replace(/[^0-9]/g, '').slice(0, 5))}
-                                            placeholder="00000"
                                             className="course-input"
                                         />
                                         <span className="input-separator">-</span>
@@ -60,7 +103,6 @@ const Application = () => {
                                             maxLength="2"
                                             value={subNumBack}
                                             onInput={(e) => setSubNumBack(e.target.value = e.target.value.replace(/[^0-9]/g, '').slice(0, 2))}
-                                            placeholder="00"
                                             className="course-input small"
                                         />
                                     </td>
@@ -68,7 +110,7 @@ const Application = () => {
                             </tbody>
                         </table>
                         <button className="add-button">
-                            <span>+</span> 추가
+                            신청
                         </button>
                     </div>
 
@@ -89,8 +131,8 @@ const Application = () => {
                                     <td>{sub_name}</td>
                                     <td>{sub_score}</td>
                                     <td>
-                                        <button onClick={applicate} className="apply-button">
-                                            신청버튼
+                                        <button onClick={sub_cancel} className="apply-button">
+                                            신청 취소
                                         </button>
                                     </td>
                                 </tr>

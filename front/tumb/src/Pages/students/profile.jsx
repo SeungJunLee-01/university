@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Profile.css';
 
@@ -12,9 +12,52 @@ const Profile = () => {
         navigate('/Students/Result');
     }
 
-    //학번, 한글성명, 주민번호 앞자리, 성별, 소속학과, 학년, 학적상태(재학, 휴학, 자퇴)
-    const { stu_num, stu_name, stu_per, stu_gen, stu_aff, stu_grade, stu_state }
-        = { stu_num: 566, stu_name: 'Lee', stu_per: 111111, stu_gen: '남', stu_aff: '컴공', stu_grade: 3, stu_state: '재학' };
+
+    //학생 정보
+    const [stuNum, setStuNum] = useState(566);
+    const [stuName, setStuName] = useState('Lee');
+    const [stuPer, setStuPer] = useState('111111');   //주민번호
+    const [stuGen, setStuGen] = useState('남');
+    const [stuAff, ] = useState('컴공');    //소속학과
+    const [stuGrade, ] = useState(3);
+    const [stuState, ] = useState('재학');  //학적상태
+
+
+    //학생 프로필 GET함수
+    const stuProfile = async () => {
+        try{
+            const stuData = await fetch('주소 받아쓰기', {
+                methode: "GET",
+                headers: {
+                    "Content-Type" : "링크",
+                },
+            });
+            const stuResult = await stuData.json();
+
+            if(stuData.status === 200) {
+                console.log(stuResult);
+                setStuNum(stuResult.num); //수정할것
+                //다른 페이지에서 학생 정보 쓸 수 있도록 로컬에 저장
+                const studentInfo = {
+                    stu_num: stuResult.num,
+                    stu_name: stuResult.name,
+                    stu_personalNum: stuResult.personalNum,
+                    stu_gender: stuResult.gender,
+                    stu_affiliation: stuResult.affiliation,
+                    stu_grade: stuResult.grade,
+                    stu_state: stuResult.state
+                };
+                localStorage.setItem('studentInfo', JSON.stringify(studentInfo));
+                
+            } else{
+                alert('프로필을 가져오지 못했습니다.');
+            }
+        }
+        catch(error) {
+            console.error(error);
+        }
+    };
+
 
     // 학적 상태에 따른 클래스명 결정
     const getStatusClass = (status) => {
@@ -40,12 +83,12 @@ const Profile = () => {
                             <div className="avatar-placeholder">
                                 <span>👤</span>
                             </div>
-                            <h2>{stu_name}</h2>
-                            <p className="student-number">{stu_num}</p>
+                            <h2>{stuName}</h2>
+                            <p className="student-number">{stuNum}</p>
                         </div>
 
-                        <div className={`status-badge ${getStatusClass(stu_state)}`}>
-                            {stu_state}
+                        <div className={`status-badge ${getStatusClass(stuState)}`}>
+                            {stuState}
                         </div>
                     </div>
 
@@ -57,28 +100,28 @@ const Profile = () => {
                                     <span className="info-icon">📋</span>
                                     <div className="info-content">
                                         <span className="info-label">학번</span>
-                                        <span className="info-value">{stu_num}</span>
+                                        <span className="info-value">{stuNum}</span>
                                     </div>
                                 </div>
                                 <div className="info-item">
                                     <span className="info-icon">👤</span>
                                     <div className="info-content">
                                         <span className="info-label">이름</span>
-                                        <span className="info-value">{stu_name}</span>
+                                        <span className="info-value">{stuName}</span>
                                     </div>
                                 </div>
                                 <div className="info-item">
                                     <span className="info-icon">🆔</span>
                                     <div className="info-content">
                                         <span className="info-label">주민번호</span>
-                                        <span className="info-value">{stu_per}-*******</span>
+                                        <span className="info-value">{stuPer}-*******</span>
                                     </div>
                                 </div>
                                 <div className="info-item">
                                     <span className="info-icon">⚧</span>
                                     <div className="info-content">
                                         <span className="info-label">성별</span>
-                                        <span className="info-value">{stu_gen}</span>
+                                        <span className="info-value">{stuGen}</span>
                                     </div>
                                 </div>
                             </div>
@@ -91,22 +134,22 @@ const Profile = () => {
                                     <span className="info-icon">🏫</span>
                                     <div className="info-content">
                                         <span className="info-label">소속학과</span>
-                                        <span className="info-value">{stu_aff}</span>
+                                        <span className="info-value">{stuAff}</span>
                                     </div>
                                 </div>
                                 <div className="info-item">
                                     <span className="info-icon">📚</span>
                                     <div className="info-content">
                                         <span className="info-label">학년</span>
-                                        <span className="info-value">{stu_grade}학년</span>
+                                        <span className="info-value">{stuGrade}학년</span>
                                     </div>
                                 </div>
                                 <div className="info-item">
                                     <span className="info-icon">✅</span>
                                     <div className="info-content">
                                         <span className="info-label">학적상태</span>
-                                        <span className={`info-value ${getStatusClass(stu_state)}`}>
-                                            {stu_state}
+                                        <span className={`info-value ${getStatusClass(stuState)}`}>
+                                            {stuState}
                                         </span>
                                     </div>
                                 </div>
@@ -137,5 +180,5 @@ const Profile = () => {
         </div>
     );
 };
-//파일명 변경을 위한 주석
+
 export default Profile;

@@ -17,6 +17,31 @@ function Result() {
     const subjects = [sub1, sub2];
     const [selectSemester, setSelectSemester] = useState('');
 
+
+    //성적 정보 가져오기
+    const subGrade = async () => {
+        try{
+            const subGradeData = await fetch('주소 받아쓰기', {
+                methode: "GET",
+                headers: {
+                    "Content-Type" : "링크",
+                },
+            });
+            const subGradeResult = await subGradeData.json();
+
+            if(subGradeData.status === 200) {
+                console.log(subGradeResult);
+                
+            } else{
+                alert('성적 정보를 불러오지 못하였습니다.');
+            }
+        }
+        catch(error) {
+            console.error(error);
+        }
+    };
+
+
     // 성적을 점수로 변환하는 함수
     const getGradeColor = (grade) => {
         if (grade.includes('A')) return 'grade-a';

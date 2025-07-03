@@ -6,20 +6,46 @@ function Login() {
     const navigate = useNavigate();
 
     
-    const user = {id: '123',pw: '123',role: 'student'}
+    const user = {id: '123',pw: '123',role: 'student'}  //api 연결하고 나면 여기 지우기
 
 
     const [inputId, setInputid] = useState('');
     const [inputPw, setInputpw] = useState('');
 
 
-    const idcheck = () => { //로그인 함수
+    // //로그인 Post
+    // const handleLogin = async () => {
+    //     try{
+    //         const userDataCheck = await fetch('주소', {
+    //             method: 'post',
+    //             headers: {
+    //                 'Content-Type' : '주는거 받아적기',
+    //             },
+    //             body: JSON,stringify({
+    //                 id: inputId,
+    //                 password: inputPw
+    //             }),
+    //         });
+    //         const userData = await loginResponse.json();
+
+    //         if(userData.success) {
+    //             LocalStorage.setItem('token', userData.token);
+    //             navigate('/Students/Profile');
+    //         } else{
+    //             alert('아이디 또는 비밀번호가 틀렸습니다.');
+    //         }
+    //     }
+    // };
+
+
+    //로그인 함수
+    const idcheck = () => {
         if((user.id === inputId) && (user.pw === inputPw)) {
-            if(user.role == 'student'){
+            if(user.role === 'student'){
                 alert('로그인 완료');
                 navigate('/students/Profile');
             }
-            else if(user.role == 'professor'){
+            else if(user.role === 'professor'){
                 alert('로그인 완료');
                 navigate('/professor/pfProfile');
             }
@@ -38,7 +64,7 @@ function Login() {
     }
 
     // Enter 키 처리 함수 추가
-    const handleKeyPress = (e) => {
+    const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             idcheck();
         }
@@ -58,6 +84,7 @@ function Login() {
                             type="text"
                             value={inputId}
                             onChange={(e) => setInputid(e.target.value)}
+                            onKeyDown={handleKeyDown}
                             placeholder="학번 또는 교번을 입력하세요."
                             className="login-input"
                         />
@@ -69,18 +96,19 @@ function Login() {
                             type="password"
                             value={inputPw}
                             onChange={(e) => setInputpw(e.target.value)}
+                            onKeyDown={handleKeyDown}
                             placeholder="비밀번호를 입력하세요."
                             className="login-input"
                         />
                     </div>
 
-                    <button className="login_button" onClick={idcheck}>로그인</button>
+                    <button className="login_button" onClick={idcheck}>로그인</button>  api연결하면 idcheck부분 바꾸기
                     
                     <div className="divider">
                         <span>또는</span>
                     </div>
                     
-                    <button className="sign_up_link" onClick={SignUp_Link}>회원가입</button>
+                    <button className="sign_up_link" onClick={SignUp_Link}>회원가입</button>  
                 </div>
             </div>
         </div>
