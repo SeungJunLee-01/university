@@ -163,28 +163,6 @@
     color: white;
 }
 
-/* 푸터 링크 스타일 */
-.login-footer {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 14px;
-}
-
-.login-footer a {
-    color: #666;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.login-footer a:hover {
-    color: #667eea;
-    text-decoration: underline;
-}
-
-.login-footer span {
-    margin: 0 10px;
-    color: #ccc;
-}
 
 /* 반응형 디자인 */
 @media (max-width: 480px) {

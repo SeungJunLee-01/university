@@ -8,14 +8,17 @@ const Profile = () => {
     const app_link = () => {
         navigate('/students/Application');
     }
+    const result_link = () => {
+        navigate('/Students/Result');
+    }
 
     //학번, 한글성명, 주민번호 앞자리, 성별, 소속학과, 학년, 학적상태(재학, 휴학, 자퇴)
-    const {stu_num, stu_name, stu_per, stu_gen, stu_aff, stu_grade, stu_state}
-     = {stu_num: 566, stu_name: 'Lee', stu_per: 111111, stu_gen: '남', stu_aff: '컴공', stu_grade: 3, stu_state: '재학'};
+    const { stu_num, stu_name, stu_per, stu_gen, stu_aff, stu_grade, stu_state }
+        = { stu_num: 566, stu_name: 'Lee', stu_per: 111111, stu_gen: '남', stu_aff: '컴공', stu_grade: 3, stu_state: '재학' };
 
     // 학적 상태에 따른 클래스명 결정
     const getStatusClass = (status) => {
-        switch(status) {
+        switch (status) {
             case '재학': return 'status-active';
             case '휴학': return 'status-leave';
             case '자퇴': return 'status-quit';
@@ -23,7 +26,7 @@ const Profile = () => {
         }
     };
 
-    return(
+    return (
         <div className="profile-container">
             <div className="profile-wrapper">
                 <div className="profile-header">
@@ -40,7 +43,7 @@ const Profile = () => {
                             <h2>{stu_name}</h2>
                             <p className="student-number">{stu_num}</p>
                         </div>
-                        
+
                         <div className={`status-badge ${getStatusClass(stu_state)}`}>
                             {stu_state}
                         </div>
@@ -117,6 +120,12 @@ const Profile = () => {
                             수강신청
                         </button>
                     </div>
+                    <div className="profile-actions">
+                        <button className='application_button' onClick={result_link}>
+                            <span className="button-icon">📝</span>
+                            성적확인
+                        </button>
+                    </div>
                 </div>
 
                 <div className="profile-footer">
@@ -128,5 +137,5 @@ const Profile = () => {
         </div>
     );
 };
-
+//파일명 변경을 위한 주석
 export default Profile;
