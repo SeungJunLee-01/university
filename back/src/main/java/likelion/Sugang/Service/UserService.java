@@ -15,9 +15,5 @@ public class UserService {
         return userDAO.adduser(user_name,user_birth,user_sex,user_department,type);
     }
 
-    public UserDTO getuser(){
 
-    }
-
-    public UserDTO
 }
