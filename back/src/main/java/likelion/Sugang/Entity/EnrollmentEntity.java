@@ -18,18 +18,19 @@ public class EnrollmentEntity {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer enrollment_id;
 
-    @Column
-    private Integer student_id;
+    @ManyToOne
+    @JoinColumn(name = "student_id",referencedColumnName = "user_id")
+    private UserEntity user_id;
 
-    @Column
-    private Integer course_id;
+    @ManyToOne
+    @JoinColumn(name = "course_id",referencedColumnName = "user_id")
+    private CourseEntity course_id;
 
     public EnrollmentDTO toDTO(){
         return EnrollmentDTO.builder()
                 .enrollment_id(enrollment_id)
-                .student_id(student_id)
-                .course_id(course_id)
+                .student_id(user_id.getUser_id())
+                .course_id(course_id.getCourse_id())
                 .build();
     }
-
 }
