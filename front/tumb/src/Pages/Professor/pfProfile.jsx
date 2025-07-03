@@ -18,7 +18,7 @@ const pfProfile = () => {
         switch(status) {
             case '재학': return 'status-active';
             case '휴학': return 'status-leave';
-            case '자퇴': return 'status-quit';
+            case '': return 'status-quit';
             default: return '';
         }
     };
