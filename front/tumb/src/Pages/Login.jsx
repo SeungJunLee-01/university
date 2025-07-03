@@ -6,7 +6,7 @@ function Login() {
     const navigate = useNavigate();
 
     
-    const user = {id: '123',pw: '123',role: 'professor'}
+    const user = {id: '123',pw: '123',role: 'student'}
 
 
     const [inputId, setInputid] = useState('');

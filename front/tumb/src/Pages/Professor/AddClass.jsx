@@ -1,10 +1,10 @@
 import React from "react";
 
-const Addclass = () => {
+const AddClass = () => {
     return(
         <h1>hello class</h1>
     );
 };
 
 
-export default Addclass;
+export default AddClass;

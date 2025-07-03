@@ -4,9 +4,10 @@ import SignUp from './Pages/SignUp';
 import Profile from './Pages/Students/Profile';
 import Application from './Pages/Students/Application';
 import PfProfile from './Pages/Professor/PfProfile';
-import Addclass from './Pages/Professor/AddClass';
+import AddClass from './Pages/Professor/AddClass';
 import AddScore from './Pages/Professor/AddScore';
 import AddStu from './Pages/Professor/AddStu';
+import Result from './Pages/Students/Result';
 
 const App = () => {
 
@@ -19,9 +20,10 @@ const App = () => {
                 <Route path='/Students/Profile' element={<Profile/>}/>
                 <Route path='/Students/Application' element={<Application/>}/>
                 <Route path='/Professor/PfProfile' element={<PfProfile/>}/>
-                <Route path='/Professor/PfProfile/Addclass' element={<Addclass/>}/>
+                <Route path='/Professor/PfProfile/AddClass' element={<AddClass/>}/>
                 <Route path='/Professor/PfProfile/AddScore' element={<AddScore/>}/>
                 <Route path='/Professor/PfProfile/AddStu' element={<AddStu/>}/>
+                <Route path='/Students/Result' element={<Result/>} />
             </Routes>
           </BrowserRouter>  
         </div>
