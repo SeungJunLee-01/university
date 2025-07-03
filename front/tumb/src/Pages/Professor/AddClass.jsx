@@ -104,4 +104,7 @@ const AddClass = () => {
 };
 
 export default AddClass;
+<<<<<<< HEAD
 
+=======
+>>>>>>> fb34db5 (a)
