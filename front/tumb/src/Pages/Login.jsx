@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
-function Log_in() { 
+function Login() { 
     const navigate = useNavigate();
 
     const id = '123';   //초기 아이디 비번 설정 나중에 지울것
@@ -81,4 +81,4 @@ function Log_in() {
     );
 };
 
-export default Log_in;
+export default Login;

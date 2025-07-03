@@ -1,5 +1,5 @@
 import { Routes, Route, Link, useNavigate, BrowserRouter } from 'react-router-dom';
-import Log_in from './Pages/Log_in';
+import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
 import Profile from './Pages/Students/Profile';
 import Application from './Pages/Students/Application';
@@ -10,7 +10,7 @@ const App = () => {
         <div>
           <BrowserRouter>
             <Routes>
-                <Route path='/' element={<Log_in/>}/>
+                <Route path='/' element={<Login/>}/>
                 <Route path='/SignUp' element={<SignUp/>}/>
                 <Route path='/Students/Profile' element={<Profile/>}/>
                 <Route path='/Students/Application' element={<Application/>}/>
