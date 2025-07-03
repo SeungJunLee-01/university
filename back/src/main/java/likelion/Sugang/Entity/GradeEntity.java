@@ -17,11 +17,11 @@ public class GradeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer grade_id;
 
     @Column
-    private Integer grade_id;
-    @Column
     private Integer course_id;
+
     @Column
     private Integer student_id;
     @Column

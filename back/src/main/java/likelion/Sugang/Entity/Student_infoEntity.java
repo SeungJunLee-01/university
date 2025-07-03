@@ -16,9 +16,8 @@ import lombok.*;
 public class Student_infoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    @Column
     private Integer status;
+
     @Column
     private Integer id;
 

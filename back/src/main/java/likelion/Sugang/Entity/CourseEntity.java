@@ -18,7 +18,7 @@ public class CourseEntity {
 
     @Column
     private String course_name;
-    // 연관관계 매핑: 다대일
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)  // 외래키 칼럼 이름 지정
     private UserEntity user;
