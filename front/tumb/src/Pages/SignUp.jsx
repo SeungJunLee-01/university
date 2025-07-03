@@ -19,7 +19,7 @@ const SignUp = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-  // 숫자만 입력 받도록 - gpt는 신이여..
+  // 숫자만 입력 받도록 - gpt는 신이여.
     if (name === 'userID' || name === 'originNum') {
       const onlyNums = value.replace(/[^0-9]/g, '');
       setFormData(prev => ({ ...prev, [name]: onlyNums }));
