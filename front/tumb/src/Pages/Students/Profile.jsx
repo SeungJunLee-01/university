@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Profile.css';
 
+// 학생 기본 정보 삭제,
+
 const Profile = () => {
     const navigate = useNavigate();
 
