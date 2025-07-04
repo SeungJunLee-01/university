@@ -6,6 +6,8 @@ import likelion.Sugang.Entity.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -19,7 +21,44 @@ public class UserService {
     }
 
     public UserDTO registerUser(UserDTO userDTO) {
-        // 저장 로직 없이 DTO 그대로 반환
-        return userDTO;
+        // DTO -> Entity 변환
+        UserEntity userEntity = UserEntity.builder()
+                .userId(userDTO.getUserId())
+                .name(userDTO.getName())
+                .birth(userDTO.getBirth())
+                .sex(userDTO.getSex())
+                .studentDepartment(userDTO.getStudentDepartment())
+                .status(userDTO.getStatus())
+                .type(userDTO.getType())
+                .password(userDTO.getPassword())
+                .build();
+
+        UserEntity savedEntity = userDAO.save(userEntity);
+
+        return savedEntity.toDTO();
     }
+
+    public boolean login(UserDTO userDTO) {
+        Optional<UserEntity> userOpt = userDAO.findById(userDTO.getUserId());
+
+        if (userOpt.isEmpty()) {
+            return false;  // 유저 없음
+        }
+
+        UserEntity user = userOpt.get();
+
+        if (user.getType() == null || user.getType() != 1) {
+            return false;
+        }
+
+        if (user.getPassword() == null || !user.getPassword().equals(userDTO.getPassword())) {
+            return false;  // 비밀번호 불일치
+        }
+
+        return true;
+    }
+
+
+
+
 }

@@ -34,4 +34,16 @@ public class UserController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody UserDTO userDTO) {
+        boolean isSuccess = userService.login(userDTO);
+        if (isSuccess) {
+            return ResponseEntity.ok("로그인 성공");
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인 실패");
+        }
+    }
+
+
 }

@@ -16,6 +16,9 @@ public class UserEntity {
     private Integer userId;
 
     @Column
+    private String password;
+
+    @Column
     private String name;
 
     @Column
@@ -32,10 +35,11 @@ public class UserEntity {
 
     @Column
     private Integer type;
-    //ㅇㅇ
+
     public UserDTO toDTO(){
         return UserDTO.builder()
                 .userId(userId)
+                .password(password)
                 .name(name)
                 .birth(birth)
                 .sex(sex)

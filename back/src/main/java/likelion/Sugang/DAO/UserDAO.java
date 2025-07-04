@@ -20,4 +20,12 @@ public class UserDAO {
     public Optional<UserEntity> findProfessorById(Integer userId) {
         return userRepository.findByUserIdAndType(userId, 0);
     }
+
+    public Optional<UserEntity> findById(Integer userId) {
+        return userRepository.findById(userId);
+    }
+
+    public UserEntity save(UserEntity userEntity) {
+        return userRepository.save(userEntity);
+    }
 }
