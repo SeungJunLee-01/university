@@ -13,7 +13,6 @@ import lombok.*;
 @AllArgsConstructor
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
     @Column
@@ -33,7 +32,7 @@ public class UserEntity {
 
     @Column
     private Integer type;
-
+    //ㅇㅇ
     public UserDTO toDTO(){
         return UserDTO.builder()
                 .userId(userId)
