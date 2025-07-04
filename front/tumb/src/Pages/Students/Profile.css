@@ -1,7 +1,7 @@
 /* 전체 컨테이너 */
 .profile-container {
     min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg,#21ED93 0%, #7d98ef 80%);
     padding: 20px;
     display: flex;
     align-items: center;
@@ -69,7 +69,7 @@
 .avatar-placeholder {
     width: 120px;
     height: 120px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg,#21ED93 0%, #7d98ef 80%);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -201,7 +201,7 @@
     align-items: center;
     gap: 10px;
     padding: 15px 40px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg,#21ED93 0%, #7d98ef 80%);
     color: white;
     border: none;
     border-radius: 10px;
