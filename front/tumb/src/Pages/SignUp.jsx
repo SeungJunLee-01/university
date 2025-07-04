@@ -77,7 +77,7 @@ const SignUp = () => {
         <h2>회원가입</h2>
 
         <div className='Role'>
-          <label htmlFor='role'>[학생,교수] 선택해주세요</label>
+          <label htmlFor='role'>[학생 , 교수] 선택해주세요</label>
           <select id='role' name='role' value={formData.role} onChange={handleChange}>
             <option value=''>선택하세요</option>
             <option value='student'>학생</option>
