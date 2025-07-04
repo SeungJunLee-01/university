@@ -9,7 +9,7 @@ function Login() {
     const navigate = useNavigate();
 
     
-    const user = {id: '123',pw: '123',role: 'professor'}  //api 연결하고 나면 여기 지우기
+    const user = {id: '123',pw: '123',role: 'student'}  //api 연결하고 나면 여기 지우기
 
 
     const [inputId, setInputid] = useState('');

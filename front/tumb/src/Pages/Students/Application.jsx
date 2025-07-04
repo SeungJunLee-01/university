@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Application.css';
 
 //로컬에 저장된 학생정보 주석 풀기, 수강 신청시 학생 정보에 강의 리스트 들어가야 함, DELETE로 리스트에서 빼는 버튼 만들어야 함
 
 const Application = () => {
+
+    const navigate = useNavigate();
+
     const {stu_num, stu_name, stu_gen} = {stu_num: 566, stu_name: 'Lee', stu_gen: '남'};    //임시 학생 정보
     const {sub_num_front, sub_num_back, sub_name, sub_score} = {sub_num_front: 11111, sub_num_back: 11, sub_name: '교과목명', sub_score: 3};
 
@@ -42,6 +46,17 @@ const Application = () => {
         }
     };
 
+    //5분 뒤 자동 로그아웃
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            alert("로그인 시간이 만료되었습니다.");
+            localStorage.removeItem('token');
+            localStorage.removeItem('studentInfo');
+            navigate('./login');
+        }, 5 * 60 * 1000);
+        return() => clearTimeout(timer);
+    }, [navigate]);
+
 
     //신청 버튼 기능
     const subApplicate = () => {
@@ -55,6 +70,7 @@ const Application = () => {
 
     //수강신청 취소 DELETE api로 만들어야 함
     const sub_cancel = () => {
+        alert('신청을 취소하시겠습니까?');
 
         alert('수강신청이 취소 되었습니다.');
     }
