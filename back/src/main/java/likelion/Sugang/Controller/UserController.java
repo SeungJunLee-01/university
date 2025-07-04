@@ -1,6 +1,7 @@
 package likelion.Sugang.Controller;
 
 import likelion.Sugang.DTO.UserDTO;
+import likelion.Sugang.DTO.UserLoginDTO;
 import likelion.Sugang.Service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -36,10 +37,10 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UserDTO userDTO) {
-        boolean isSuccess = userService.login(userDTO);
-        if (isSuccess) {
-            return ResponseEntity.ok("로그인 성공");
+    public ResponseEntity<?> login(@RequestBody UserLoginDTO userDTO) {
+        UserDTO user = userService.login(userDTO);
+        if (user != null) {
+            return ResponseEntity.ok(user);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인 실패");
         }

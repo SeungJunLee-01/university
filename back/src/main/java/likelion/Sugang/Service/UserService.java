@@ -2,6 +2,7 @@ package likelion.Sugang.Service;
 
 import likelion.Sugang.DAO.UserDAO;
 import likelion.Sugang.DTO.UserDTO;
+import likelion.Sugang.DTO.UserLoginDTO;
 import likelion.Sugang.Entity.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -38,24 +39,26 @@ public class UserService {
         return savedEntity.toDTO();
     }
 
-    public boolean login(UserDTO userDTO) {
+    public UserDTO login(UserLoginDTO userDTO) {
         Optional<UserEntity> userOpt = userDAO.findById(userDTO.getUserId());
 
         if (userOpt.isEmpty()) {
-            return false;  // 유저 없음
+            return null;  // 유저 없음
         }
 
         UserEntity user = userOpt.get();
 
         if (user.getType() == null || user.getType() != 1) {
-            return false;
+            return null;
         }
 
         if (user.getPassword() == null || !user.getPassword().equals(userDTO.getPassword())) {
-            return false;  // 비밀번호 불일치
+            return null;  // 비밀번호 불일치
         }
 
-        return true;
+        return userDAO.findStudentById(userDTO.getUserId())
+                .orElseThrow(() -> new RuntimeException("뭔가 잘못됨"))
+                .toDTO();
     }
 
 
