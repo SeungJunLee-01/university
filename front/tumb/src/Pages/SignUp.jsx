@@ -38,7 +38,7 @@ const SignUp = () => {
     }
 
     if (userID.length !== 7) {
-      alert('아이디는 7자리여야 합니다.');
+      alert('아이디는 7자리여야 합니다!');
       return false;
     }
 
