@@ -16,31 +16,31 @@ public class GradeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer grade_id;
+    private Integer gradeId;
 
     @Column
     private Integer score;
 
     @Column
-    private String letter_grade;
+    private String letterGrade;
 
     // 학생:성적 = 1:N 관계 (N 쪽)
     @ManyToOne
-    @JoinColumn(name = "student_id", referencedColumnName = "user_id")
-    private UserEntity user_id;
+    @JoinColumn(name = "studentId", referencedColumnName = "userId")
+    private UserEntity userId;
 
     // 강의:성적 = 1:N 관계 (N 쪽)
     @ManyToOne
-    @JoinColumn(name = "course_id", referencedColumnName = "course_id")
-    private CourseEntity course_id;
+    @JoinColumn(name = "courseId", referencedColumnName = "courseId")
+    private CourseEntity courseId;
 
     public GradeDTO toDTO() {
         return GradeDTO.builder()
-                .student_id(user_id.getUser_id())
-                .grade_id(grade_id)
-                .course_id(course_id.getCourse_id())
+                .studentId(userId.getUserId())
+                .gradeId(gradeId)
+                .courseId(courseId.getCourseId())
                 .score(score)
-                .letter_grade(letter_grade)
+                .letterGrade(letterGrade)
                 .build();
     }
 }

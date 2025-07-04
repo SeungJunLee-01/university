@@ -9,8 +9,6 @@ import lombok.*;
 @AllArgsConstructor
 
 public class Student_infoDTO {
-
+    private Integer studentInfoId;
     private Integer status;
-    private Integer user;
-
 }

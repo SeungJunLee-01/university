@@ -16,21 +16,21 @@ import lombok.*;
 public class EnrollmentEntity {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Integer enrollment_id;
+    private Integer enrollmentId;
 
     @ManyToOne
-    @JoinColumn(name = "student_id",referencedColumnName = "user_id")
-    private UserEntity user_id;
+    @JoinColumn(name = "studentId",referencedColumnName = "userId")
+    private UserEntity userId;
 
     @ManyToOne
-    @JoinColumn(name = "course_id",referencedColumnName = "user_id")
-    private CourseEntity course_id;
+    @JoinColumn(name = "courseId",referencedColumnName = "courseId")
+    private CourseEntity courseId;
 
     public EnrollmentDTO toDTO(){
         return EnrollmentDTO.builder()
-                .enrollment_id(enrollment_id)
-                .student_id(user_id.getUser_id())
-                .course_id(course_id.getCourse_id())
+                .enrollmentId(enrollmentId)
+                .studentId(userId.getUserId())
+                .courseId(courseId.getCourseId())
                 .build();
     }
 }

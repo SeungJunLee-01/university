@@ -10,9 +10,9 @@ import lombok.*;
 
 public class GradeDTO {
 
-    private Integer grade_id;
-    private Integer course_id;
-    private Integer student_id;
+    private Integer gradeId;
+    private Integer courseId;
+    private Integer studentId;
     private Integer score;
-    private String letter_grade;
+    private String letterGrade;
 }
