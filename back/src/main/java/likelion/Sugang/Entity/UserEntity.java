@@ -32,7 +32,7 @@ public class UserEntity {
 
     @Column
     private Integer type;
-
+    //ㅇㅇ
     public UserDTO toDTO(){
         return UserDTO.builder()
                 .userId(userId)
