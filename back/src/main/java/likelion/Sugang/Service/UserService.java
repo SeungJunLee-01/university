@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-
 public class UserService {
     private final UserDAO userDAO;
 
@@ -17,5 +16,10 @@ public class UserService {
                 .orElseThrow(() -> new IllegalArgumentException("해당 학생이 존재하지 않습니다."));
 
         return student.toDTO();
+    }
+
+    public UserDTO registerUser(UserDTO userDTO) {
+        // 저장 로직 없이 DTO 그대로 반환
+        return userDTO;
     }
 }
