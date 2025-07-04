@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
+
+//api 받으면 밑에 POST 주석 풀고 idcheck부분 바꾸고 기존 user 정보 삭제
+
 function Login() { 
     const navigate = useNavigate();
 

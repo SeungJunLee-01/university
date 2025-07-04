@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Application.css';
 
+//로컬에 저장된 학생정보 주석 풀기, 수강 신청시 학생 정보에 강의 리스트 들어가야 함, DELETE로 리스트에서 빼는 버튼 만들어야 함
+
 const Application = () => {
     const {stu_num, stu_name, stu_gen} = {stu_num: 566, stu_name: 'Lee', stu_gen: '남'};    //임시 학생 정보
     const {sub_num_front, sub_num_back, sub_name, sub_score} = {sub_num_front: 11111, sub_num_back: 11, sub_name: '교과목명', sub_score: 3};

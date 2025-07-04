@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Result.css';
 
+//
+
 function Result() {
 
     const sub1 = {
@@ -18,7 +20,7 @@ function Result() {
     const [selectSemester, setSelectSemester] = useState('');
 
 
-    //성적 정보 가져오기
+    //성적 정보 가져오기 GET
     const subGrade = async () => {
         try{
             const subGradeData = await fetch('주소 받아쓰기', {
