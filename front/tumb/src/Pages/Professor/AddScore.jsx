@@ -56,6 +56,13 @@ const AddScore = () => {
     }));
   };
 
+   const handleCrosscheck = () => {
+    const confirmSave = window.confirm('정말 저장하시겠습니까?');
+    if (confirmSave){
+       handleSave();
+    }
+  };
+  
   const handleSave = () => {
     alert('✅ 성적이 저장되었습니다.');
     console.log(`📝 저장된 성적 (${semester} / ${subject}):`, grades);
@@ -109,7 +116,7 @@ const AddScore = () => {
                 </li>
               ))}
             </ul>
-            <button onClick={handleSave} className="addscore-save-button">저장하기</button>
+            <button onClick={handleCrosscheck} className="addscore-save-button">저장하기</button>
           </div>
         )}
       </div>
