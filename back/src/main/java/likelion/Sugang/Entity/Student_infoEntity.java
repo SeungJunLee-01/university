@@ -2,6 +2,7 @@ package likelion.Sugang.Entity;
 
 import jakarta.persistence.*;
 import likelion.Sugang.DTO.GradeDTO;
+import likelion.Sugang.DTO.Student_infoDTO;
 import lombok.*;
 
 @Entity
@@ -15,10 +16,21 @@ import lombok.*;
 
 public class Student_infoEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "studentinfo_id")
+    private Integer studentinfo_id;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "studentinfo_id", referencedColumnName = "user_id")
+    private UserEntity user;
 
     @Column
     private Integer status;
-    @Column
-    private Integer id;
+
+    public Student_infoDTO toDTO() {
+        return Student_infoDTO.builder()
+                .user(studentinfo_id)
+                .status(status)
+                .build();
+    }
 }
