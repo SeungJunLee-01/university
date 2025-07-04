@@ -6,10 +6,18 @@ import likelion.Sugang.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
 public class UserDAO {
-    //private final UserRepository userRepository;
+    private final UserRepository userRepository;
 
+    public Optional<UserEntity> findStudentById(Integer userId) {
+        return userRepository.findByUserIdAndType(userId, 1);
+    }
+
+    public Optional<UserEntity> findProfessorById(Integer userId) {
+        return userRepository.findByUserIdAndType(userId, 0);
+    }
 }

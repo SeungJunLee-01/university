@@ -11,7 +11,8 @@ import lombok.*;
 @NoArgsConstructor
 
 public class CourseDTO {
-    private Integer course_id;
-    private String course_name;
+    private Integer courseId;
+    private String courseName;
     private String semester;
+    private Integer profId;
 }

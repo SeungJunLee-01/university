@@ -1,6 +1,8 @@
 package likelion.Sugang.Entity;
 
 import jakarta.persistence.*;
+import likelion.Sugang.DTO.CourseDTO;
+import likelion.Sugang.DTO.EnrollmentDTO;
 import lombok.*;
 
 import java.util.List;
@@ -17,16 +19,25 @@ public class CourseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer course_id;
+    private Integer courseId;
 
     @Column
-    private String course_name;
+    private String courseName;
 
     @Column
     private String semester;
 
     // 교수:강의 = 1:N 관계 (N 쪽)
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "prof_id", referencedColumnName = "user_id", nullable = false) // 교수의 ID
-    private UserEntity user_id;
+    @JoinColumn(name = "profId", referencedColumnName = "userId", nullable = false) // 교수의 ID
+    private UserEntity userId;
+
+    public CourseDTO toDTO(){
+        return CourseDTO.builder()
+                .courseId(courseId)
+                .courseName(courseName)
+                .semester(semester)
+                .profId(userId.getUserId())
+                .build();
+    }
 }

@@ -14,7 +14,7 @@ import lombok.*;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer user_id;
+    private Integer userId;
 
     @Column
     private String name;
@@ -26,7 +26,7 @@ public class UserEntity {
     private String sex;
 
     @Column
-    private String student_department;
+    private String studentDepartment;
 
     @Column
     private String status;
@@ -36,11 +36,11 @@ public class UserEntity {
 
     public UserDTO toDTO(){
         return UserDTO.builder()
-                .user_id(user_id)
+                .userId(userId)
                 .name(name)
                 .birth(birth)
                 .sex(sex)
-                .student_department(student_department)
+                .studentDepartment(studentDepartment)
                 .status(status)
                 .type(type)
                 .build();

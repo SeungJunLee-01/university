@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 
 public class EnrollmentDTO {
-    private Integer enrollment_id;
-    private Integer course_id;
-    private Integer student_id;
+    private Integer enrollmentId;
+    private Integer courseId;
+    private Integer studentId;
 }

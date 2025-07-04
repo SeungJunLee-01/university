@@ -16,20 +16,20 @@ import lombok.*;
 
 public class Student_infoEntity {
     @Id
-    @Column(name = "studentinfo_id")
-    private Integer studentinfo_id;
+    @Column(name = "studentInfoId")
+    private Integer studentInfoId;
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "studentinfo_id", referencedColumnName = "user_id")
-    private UserEntity user;
+    @JoinColumn(name = "studentInfoId", referencedColumnName = "userId")
+    private UserEntity userId;
 
     @Column
     private Integer status;
 
     public Student_infoDTO toDTO() {
         return Student_infoDTO.builder()
-                .user(studentinfo_id)
+                .studentInfoId(userId.getUserId())
                 .status(status)
                 .build();
     }
