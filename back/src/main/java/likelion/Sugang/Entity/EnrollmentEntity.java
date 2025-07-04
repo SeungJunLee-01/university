@@ -5,7 +5,7 @@ import likelion.Sugang.DTO.EnrollmentDTO;
 import lombok.*;
 
 @Entity
-@Table
+@Table (name = "enrollment")
 @Builder
 @Getter
 @Setter
