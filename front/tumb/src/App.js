@@ -3,7 +3,7 @@ import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
 import Profile from './Pages/Students/Profile';
 import Application from './Pages/Students/Application';
-import PfProfile from './Pages/Professor/pfProfile';
+import PfProfile from './Pages/Professor/PfProfile';
 import AddClass from './Pages/Professor/AddClass';
 import AddScore from './Pages/Professor/AddScore';
 import Result from './Pages/Students/Result';
