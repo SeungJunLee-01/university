@@ -36,7 +36,7 @@ public class UserEntity {
 
     public UserDTO toDTO(){
         return UserDTO.builder()
-                .id(user_id)
+                .user_id(user_id)
                 .name(name)
                 .birth(birth)
                 .sex(sex)

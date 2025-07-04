@@ -11,6 +11,6 @@ import lombok.*;
 public class Student_infoDTO {
 
     private Integer status;
-    private Integer id;
+    private Integer user;
 
 }
