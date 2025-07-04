@@ -1,3 +1,4 @@
+import React from "react";
 import React, { useState } from "react";
 import './AddClass.css';
 
@@ -104,7 +105,3 @@ const AddClass = () => {
 };
 
 export default AddClass;
-<<<<<<< HEAD
-
-=======
->>>>>>> fb34db5 (a)
