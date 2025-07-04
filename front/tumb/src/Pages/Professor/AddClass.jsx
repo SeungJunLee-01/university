@@ -42,10 +42,18 @@ const AddClass = () => {
     setClassList(classList.filter(cls => cls.id !== id));
   };
 
+  const handleCrosscheck = () => {
+    const confirmSave = window.confirm('정말 저장하시겠습니까?');
+    if (confirmSave){
+       handleSave();
+    }
+  };
+
   const handleSave = () => {
     alert(`${semester} 수업 정보가 저장되었습니다.`);
     console.log(`${semester} 저장된 수업 리스트:`, classList);
   };
+
 
   return (
     <div className='openclass-container'>
@@ -67,7 +75,8 @@ const AddClass = () => {
           <div className="class-list">
             <div className="button-group">
               <button onClick={handleAddClass}>➕ 수업 추가</button>
-              <button onClick={handleSave}>💾 저장</button>
+              <button onClick={handleCrosscheck}>💾 저장</button>
+              
             </div>
 
             <h2>{semester} 개설 수업 목록</h2>
