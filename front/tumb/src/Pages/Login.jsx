@@ -10,6 +10,7 @@ function Login() {
 
     
     const user = {id: '123',pw: '123',role: 'professor'}  //api 연결하고 나면 여기 지우기
+    const user1 = {id: 'qwe',pw: 'qwe',role: 'student'}
 
 
     const [inputId, setInputid] = useState('');
@@ -44,18 +45,16 @@ function Login() {
     //로그인 함수
     const idcheck = () => {
         if((user.id === inputId) && (user.pw === inputPw)) {
-            if(user.role === 'student'){
-                alert('로그인 완료');
-                navigate('/students/Profile');
-            }
-            else if(user.role === 'professor'){
+            // if(user.role === 'student'){
+            //     alert('로그인 완료');
+            //     navigate('/students/Profile');
+            // }
                 alert('로그인 완료');
                 navigate('/Professor/PfProfile');
-            }
-            else{
-                alert('로그인 실패');
-                alert('role error')
-            }
+        }
+        else if((user1.id === inputId) && (user1.pw === inputPw)) {
+            alert('로그인 완료');
+            navigate('/students/Profile');
         }
         else
             alert('아이디 또는 비밀번호가 틀렸습니다.');
