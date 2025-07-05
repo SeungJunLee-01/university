@@ -8,12 +8,12 @@ const AddClass = () => {
 
   const initialClassData = {
     '1학기': [
-      { id: 1, name: '수학', professor: '김교수', time: '월 1,2교시' },
-      { id: 2, name: '물리', professor: '박교수', time: '화 3,4교시' }
+      { id: 1, classcde: '11111-11', name: '수학', credit: '3' },
+      { id: 2, classcde: '11112-11', name: '수학', credit: '3' }
     ],
     '2학기': [
-      { id: 3, name: '영어', professor: '이교수', time: '수 5,6교시' },
-      { id: 4, name: '자료구조', professor: '정교수', time: '목 1,2교시' }
+      { id: 3, classcde: '11111-13', name: '수학', credit: '3' },
+      { id: 4, classcde: '11111-14', name: '수학', credit: '3' }
     ]
   };
 
@@ -72,9 +72,9 @@ const AddClass = () => {
           <table>
             <thead>
               <tr>
+                <th>과목코드</th>
                 <th>과목명</th>
-                <th>담당 교수</th>
-                <th>수업 시간</th>
+                <th>학점</th>
                 <th>삭제</th>
               </tr>
             </thead>
@@ -84,9 +84,9 @@ const AddClass = () => {
               ) : (
                 classList.map((cls, index) => (
                   <tr key={cls.id}>
+                    <td><input type="text" value={cls.classcode} onChange={(e) => handleFieldChange(index, 'classcode', e.target.value)} /></td>
                     <td><input type="text" value={cls.name} onChange={(e) => handleFieldChange(index, 'name', e.target.value)} /></td>
-                    <td><input type="text" value={cls.professor} onChange={(e) => handleFieldChange(index, 'professor', e.target.value)} /></td>
-                    <td><input type="text" value={cls.time} onChange={(e) => handleFieldChange(index, 'time', e.target.value)} /></td>
+                    <td><input type="text" value={cls.cerdit} onChange={(e) => handleFieldChange(index, 'credit', e.target.value)} /></td>
                     <td><button onClick={() => handleDeleteClass(cls.id)}>삭제</button></td>
                   </tr>
                 ))

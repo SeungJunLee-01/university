@@ -11,7 +11,7 @@
 /* 카드 박스 */
 .addscore-card {
   width: 100%;
-  max-width: 700px;
+  max-width: 900px;
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
@@ -66,28 +66,29 @@
 .score-edit-list ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-.score-edit-list li {
-  margin-bottom: 15px;
+.score-input-row {
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
   align-items: center;
-  justify-content: space-between;
 }
 
-.score-edit-list label {
+.score-input-row label {
   font-size: 16px;
   color: #333;
-  flex: 1;
+  width: 80px;
 }
 
-.score-edit-list select {
-  flex: 1;
+.score-input-row input {
   padding: 8px 12px;
   font-size: 15px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  margin-left: 15px;
+  width: 70px;
 }
 
 /* 저장 버튼 */
@@ -115,7 +116,82 @@
   transform: translateY(-1px);
 }
 
-/* 애니메이션 재사용 */
+/* 반영 비율 설정 */
+.weight-setting-section {
+  background: #f8f9ff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+  margin: 20px 0;
+}
+
+.weight-setting-section h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #444;
+}
+
+.weight-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.weight-row label {
+  font-size: 14px;
+  color: #333;
+  margin-right: 6px;
+}
+
+.weight-row input {
+  width: 70px;
+  padding: 8px 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* 표 스타일 */
+.score-summary-table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+.score-summary-table th,
+.score-summary-table td {
+  border: 1px solid #ddd;
+  padding: 8px 10px;
+  text-align: center;
+}
+
+.score-summary-table th {
+  background: #f0f4ff;
+  font-weight: 600;
+  color: #333;
+}
+
+.score-summary-table tr:nth-child(even) {
+  background: #fafafa;
+}
+
+/* 입력부 화살표 제거 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"],
+input[type="text"] {
+  -moz-appearance: textfield;
+}
+
+/* 애니메이션 */
 @keyframes pf-slideUp {
   from {
     opacity: 0;
@@ -133,14 +209,40 @@
     padding: 30px 20px;
   }
 
-  .score-edit-list li {
+  .score-input-row {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .score-edit-list select {
+  .score-input-row input {
+    width: 100%;
     margin-left: 0;
-    margin-top: 8px;
+  }
+
+  .weight-row input {
     width: 100%;
   }
+}
+
+.score-input-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.score-input-table th,
+.score-input-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.score-input-table input {
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
 }
