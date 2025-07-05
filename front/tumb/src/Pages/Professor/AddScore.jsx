@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import './AddScore.css';
+import { getCurrentSemester } from '../../utils/getCurrentSemester';
 
 const AddScore = () => {
-  const [semester, setSemester] = useState('');
+  const { semester } = getCurrentSemester(); // 자동 학기 설정
   const [subject, setSubject] = useState('');
   const [students, setStudents] = useState([]);
 
   const subjectData = {
     '1학기': ['수학', '물리', '프로그래밍'],
-    '2학기': ['영어', '화학', '자료구조']
+    '2학기': ['영어', '화학', '자료구조'],
+    '여름 계절학기': ['인공지능 개론', '영상처리'],
+    '겨울 계절학기': ['웹개발 실습', '파이썬 프로그래밍']
   };
 
   const studentData = {
@@ -17,8 +20,13 @@ const AddScore = () => {
     '프로그래밍': ['강민지', '최우진'],
     '영어': ['윤서준', '배하늘'],
     '화학': ['문지호', '장예린'],
-    '자료구조': ['황지훈', '고은별']
+    '자료구조': ['황지훈', '고은별'],
+    '인공지능 개론': ['김태형', '이슬기', '정민아'],
+    '영상처리': ['백지훈', '최지현'],
+    '웹개발 실습': ['윤다연', '박세진', '한주형'],
+    '파이썬 프로그래밍': ['조은우', '심가람']
   };
+
 
   const gradeOptions = [
     'A+', 'A', 'A-',
@@ -29,14 +37,6 @@ const AddScore = () => {
   ];
 
   const [grades, setGrades] = useState({});
-
-  const handleSemesterSelect = (e) => {
-    const selected = e.target.value;
-    setSemester(selected);
-    setSubject('');
-    setStudents([]);
-    setGrades({});
-  };
 
   const handleSubjectSelect = (e) => {
     const selectedSub = e.target.value;
@@ -56,13 +56,13 @@ const AddScore = () => {
     }));
   };
 
-   const handleCrosscheck = () => {
+  const handleCrosscheck = () => {
     const confirmSave = window.confirm('정말 저장하시겠습니까?');
-    if (confirmSave){
-       handleSave();
+    if (confirmSave) {
+      handleSave();
     }
   };
-  
+
   const handleSave = () => {
     alert('✅ 성적이 저장되었습니다.');
     console.log(`📝 저장된 성적 (${semester} / ${subject}):`, grades);
@@ -72,16 +72,7 @@ const AddScore = () => {
     <div className='addscore-container'>
       <div className='addscore-card'>
         <h1>성적 관리페이지</h1>
-
-        {/* 학기 선택 */}
-        <div className='addscore-selector'>
-          <label htmlFor='semester'>학기 선택</label>
-          <select id='semester' value={semester} onChange={handleSemesterSelect}>
-            <option value=''>선택하세요</option>
-            <option value='1학기'>1학기</option>
-            <option value='2학기'>2학기</option>
-          </select>
-        </div>
+        <p className="current-semester-text">📅 현재 학기: <strong>{semester}</strong></p>
 
         {/* 과목 선택 */}
         {semester && (
@@ -89,7 +80,7 @@ const AddScore = () => {
             <label htmlFor='subject'>과목 선택</label>
             <select id='subject' value={subject} onChange={handleSubjectSelect}>
               <option value=''>선택하세요</option>
-              {subjectData[semester].map((subj, idx) => (
+              {(subjectData[semester] || []).map((subj, idx) => (
                 <option key={idx} value={subj}>{subj}</option>
               ))}
             </select>
