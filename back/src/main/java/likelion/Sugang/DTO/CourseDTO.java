@@ -14,5 +14,6 @@ public class CourseDTO {
     private Integer courseId;
     private String courseName;
     private String semester;
+    private Integer credits;
     private Integer profId;
 }

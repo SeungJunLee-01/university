@@ -11,7 +11,9 @@ import java.util.Optional;
 @Component
 @RequiredArgsConstructor
 public class UserDAO {
-    private final UserRepository userRepository;
+
+
+    private UserRepository userRepository;
 
     public Optional<UserEntity> findStudentById(Integer userId) {
         return userRepository.findByUserIdAndType(userId, 1);
