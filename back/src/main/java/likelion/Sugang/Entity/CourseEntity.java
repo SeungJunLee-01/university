@@ -16,16 +16,15 @@ import java.util.List;
 @AllArgsConstructor
 
 public class CourseEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer courseId;
-
     @Column
     private String courseName;
-
     @Column
     private String semester;
+    @Column
+    private Integer credits;
 
     // 교수:강의 = 1:N 관계 (N 쪽)
     @ManyToOne(fetch = FetchType.LAZY)
@@ -37,6 +36,7 @@ public class CourseEntity {
                 .courseId(courseId)
                 .courseName(courseName)
                 .semester(semester)
+                .credits(credits)
                 .profId(userId.getUserId())
                 .build();
     }

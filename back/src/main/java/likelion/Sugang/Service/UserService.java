@@ -1,5 +1,6 @@
 package likelion.Sugang.Service;
 
+import jakarta.annotation.PostConstruct;
 import likelion.Sugang.DAO.UserDAO;
 import likelion.Sugang.DTO.UserDTO;
 import likelion.Sugang.DTO.UserLoginDTO;
@@ -60,6 +61,7 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("뭔가 잘못됨"))
                 .toDTO();
     }
+
 
 
 
