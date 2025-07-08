@@ -8,6 +8,8 @@ import likelion.Sugang.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class CourseDAO {
@@ -26,5 +28,9 @@ public class CourseDAO {
                 .build();
 
         return courseRepository.save(course).toDTO();
+    }
+
+    public List<CourseEntity> findAllByProfId(Integer profId) {
+        return courseRepository.findAllByUserId_UserId(profId);
     }
 }

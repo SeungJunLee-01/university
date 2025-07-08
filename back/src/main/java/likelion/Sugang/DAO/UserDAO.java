@@ -13,7 +13,7 @@ import java.util.Optional;
 public class UserDAO {
 
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository; //final 붙여야함.
 
     public Optional<UserEntity> findStudentById(Integer userId) {
         return userRepository.findByUserIdAndType(userId, 1);
