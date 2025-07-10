@@ -2,6 +2,8 @@ package likelion.Sugang.Entity;
 
 import jakarta.persistence.*;
 import likelion.Sugang.DTO.UserDTO;
+import likelion.Sugang.Enum.UserType;
+
 import lombok.*;
 
 @Entity
@@ -34,8 +36,9 @@ public class UserEntity {
     @Column
     private String status;
 
+    @Enumerated(EnumType.STRING) // <-- 중요! DB에 "STUDENT" 같은 문자열로 저장됨
     @Column
-    private Integer type;
+    private UserType type;
 
     public UserDTO toDTO(){
         return UserDTO.builder()

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Sugang.iml" filepath="$PROJECT_DIR$/.idea/modules/Sugang.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Sugang.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Sugang.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/university.iml" filepath="$PROJECT_DIR$/.idea/university.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Sugang.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Sugang.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/university.iml" filepath="$PROJECT_DIR$/university.iml" />
     </modules>
   </component>
 </project>
