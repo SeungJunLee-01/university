@@ -1,5 +1,6 @@
 package likelion.Sugang.DTO;
 
+import likelion.Sugang.Enum.UserType;
 import lombok.*;
 
 @Builder
@@ -15,5 +16,5 @@ public class UserDTO {
     private String sex;
     private String studentDepartment;
     private String status;
-    private Integer type;
+    private UserType type;
 }
