@@ -4,7 +4,6 @@ import likelion.Sugang.DTO.CourseDTO;
 import likelion.Sugang.Service.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +20,13 @@ public class CourseController {
     public ResponseEntity<CourseDTO> addCourse(@RequestParam String courseName, @RequestParam String semester, @RequestParam Integer credits, @RequestParam Integer profId) {
         CourseDTO courseEntity = courseService.addCourse(courseName, semester, credits, profId);
         return ResponseEntity.status(HttpStatus.CREATED).body(courseEntity);
+    }
+
+    //수업 삭제
+    @DeleteMapping
+    public ResponseEntity<String> deleteCourse(@RequestParam Integer courseId) {
+        courseService.deleteCourse(courseId);
+        return ResponseEntity.ok("삭제 성공");
     }
 
     // 교수 ID로 수업 목록 조회

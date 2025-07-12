@@ -33,4 +33,8 @@ public class CourseDAO {
     public List<CourseEntity> findAllByProfId(Integer profId) {
         return courseRepository.findAllByUserId_UserId(profId);
     }
+
+    public void deleteCourse(Integer courseId) {
+        courseRepository.deleteById(courseId);
+    }
 }
