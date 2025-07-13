@@ -12,7 +12,9 @@ import lombok.*;
 
 public class CourseDTO {
     private Integer courseId;
+    private Integer courseCode;
     private String courseName;
     private String semester;
+    private Integer credits;
     private Integer profId;
 }

@@ -21,10 +21,15 @@ public class CourseEntity {
     private Integer courseId;
 
     @Column
+    private Integer courseCode;
+
+    @Column
     private String courseName;
 
     @Column
     private String semester;
+    @Column
+    private Integer credits;
 
     // 교수:강의 = 1:N 관계 (N 쪽)
     @ManyToOne(fetch = FetchType.LAZY)
@@ -34,8 +39,10 @@ public class CourseEntity {
     public CourseDTO toDTO(){
         return CourseDTO.builder()
                 .courseId(courseId)
+                .courseCode(courseCode)
                 .courseName(courseName)
                 .semester(semester)
+                .credits(credits)
                 .profId(userId.getUserId())
                 .build();
     }

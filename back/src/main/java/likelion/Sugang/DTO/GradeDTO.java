@@ -17,5 +17,6 @@ public class GradeDTO {
     private Integer finalScore;
     private Integer assignment;
     private Integer attendance;
+    private Long totalScore;
     private String letterGrade;
 }

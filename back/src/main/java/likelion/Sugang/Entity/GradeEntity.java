@@ -31,6 +31,9 @@ public class GradeEntity {
     private Integer attendance;
 
     @Column
+    private Long totalScore;
+
+    @Column
     private String letterGrade;
 
     // 학생:성적 = 1:N 관계 (N 쪽)
@@ -52,6 +55,7 @@ public class GradeEntity {
                 .finalScore(finalScore)
                 .assignment(assignment)
                 .attendance(attendance)
+                .totalScore(totalScore)
                 .letterGrade(letterGrade)
                 .build();
     }
