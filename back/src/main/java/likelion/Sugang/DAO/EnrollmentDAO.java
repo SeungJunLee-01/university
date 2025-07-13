@@ -7,12 +7,11 @@ import likelion.Sugang.Entity.UserEntity;
 import likelion.Sugang.Repository.CourseRepository;
 import likelion.Sugang.Repository.EnrollmentRepository;
 import likelion.Sugang.Repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+//
 @Repository
 
 public class EnrollmentDAO {
@@ -35,7 +34,7 @@ public class EnrollmentDAO {
                 .orElseThrow(() -> new RuntimeException("Course not found"));
 
         EnrollmentEntity enrollmentEntity = EnrollmentEntity.builder()
-                .userId(user)
+                .studentId(user)
                 .courseId(course)
                 .build();
 
@@ -44,7 +43,7 @@ public class EnrollmentDAO {
     }
 
     public List<EnrollmentDTO> getEnrollmentsByStudentId(Integer studentId){
-        List<EnrollmentEntity> enrollments = enrollmentRepository.findByUserId_UserId(studentId);
+        List<EnrollmentEntity> enrollments = enrollmentRepository.findByUserId(studentId);
         return enrollments.stream()
                 .map(EnrollmentEntity::toDTO)
                 .collect(Collectors.toList());

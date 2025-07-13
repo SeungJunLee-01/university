@@ -1,12 +1,11 @@
 package likelion.Sugang.Entity;
 
 import jakarta.persistence.*;
-import likelion.Sugang.DTO.GradeDTO;
 import likelion.Sugang.DTO.Student_infoDTO;
 import lombok.*;
-
+//
 @Entity
-@Table
+@Table(name = "Student_info")
 @Builder
 @Getter
 @Setter

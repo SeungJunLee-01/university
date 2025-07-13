@@ -1,10 +1,7 @@
 package likelion.Sugang.Controller;
-
+//
 import likelion.Sugang.DTO.EnrollmentDTO;
-import likelion.Sugang.Repository.EnrollmentRepository;
 import likelion.Sugang.Service.EnrollmentService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

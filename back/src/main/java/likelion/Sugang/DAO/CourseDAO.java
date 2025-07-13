@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-
+//
 @Component
 @RequiredArgsConstructor
 public class CourseDAO {
@@ -31,6 +31,6 @@ public class CourseDAO {
     }
 
     public List<CourseEntity> findAllByProfId(Integer profId) {
-        return courseRepository.findAllByUserId_UserId(profId);
+        return courseRepository.findAllByUserId(profId);
     }
 }
