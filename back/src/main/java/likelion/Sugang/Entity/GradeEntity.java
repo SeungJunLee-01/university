@@ -35,7 +35,7 @@ public class GradeEntity {
 
     @Column
     private String letterGrade;
-
+//
     // 학생:성적 = 1:N 관계 (N 쪽)
     @ManyToOne
     @JoinColumn(name = "studentId", referencedColumnName = "userId")

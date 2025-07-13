@@ -5,7 +5,7 @@ import likelion.Sugang.DTO.UserDTO;
 import likelion.Sugang.Enum.UserType;
 
 import lombok.*;
-
+//
 @Entity
 @Table(name = "user")
 @Builder

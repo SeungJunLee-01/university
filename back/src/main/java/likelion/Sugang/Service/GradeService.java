@@ -1,28 +1,30 @@
 package likelion.Sugang.Service;
 
 import jakarta.transaction.Transactional;
-import likelion.Sugang.DTO.Grade_distributionDTO;
+import likelion.Sugang.DTO.GradeInputDTO;
+import likelion.Sugang.Entity.CourseEntity;
 import likelion.Sugang.Entity.GradeEntity;
 import likelion.Sugang.Entity.Grade_distributionEntity;
-import likelion.Sugang.Repository.EnrollmentRepository;
-import likelion.Sugang.Repository.GradeRepository;
-import likelion.Sugang.Repository.Grade_distributionRepository;
-import likelion.Sugang.Repository.UserRepository;
+import likelion.Sugang.Entity.UserEntity;
+import likelion.Sugang.Repository.*;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor // Lombok 어노테이션으로 생성자 자동 생성
 public class GradeService {
 
-    private final GradeRepository gradeRepository = null;
-    private final Grade_distributionRepository grade_distributionRepository = null;
-    private final EnrollmentRepository enrollmentRepository = null;
-    private final UserRepository userRepository = null;
+    private final GradeRepository gradeRepository;
+    private final Grade_distributionRepository grade_distributionRepository;
+    private final UserRepository userRepository;
+    private final CourseRepository courseRepository; // ✅ 반드시 추가
 
     @Transactional
-    public void assignGradesForCourse(Integer courseId, List<Grade_distributionDTO> gradeInputs) {
-        // 1. 과목에 해당하는 성적 비율 정보 불러오기
-        Grade_distributionEntity distribution = Grade_distributionEntity.findByCourseId(courseId)
+    public void assignGradesForCourse(Integer courseId, List<GradeInputDTO> gradeInputs) {
+        Grade_distributionEntity distribution = grade_distributionRepository.findByCourseId(courseId)
                 .orElseThrow(() -> new RuntimeException("Grade distribution not found"));
 
         int middleW = distribution.getMiddleWeight();
@@ -30,10 +32,15 @@ public class GradeService {
         int assignmentW = distribution.getAssignmentWeight();
         int attendanceW = distribution.getAttendanceWeight();
 
-        // 2. 점수 계산 및 Grades 엔티티 리스트 생성
+        CourseEntity course = courseRepository.findById(courseId)
+                .orElseThrow(() -> new RuntimeException("Course not found"));
+
         List<GradeEntity> gradesList = new ArrayList<>();
 
-        for (Grade_distributionDTO input : gradeInputs) {
+        for (GradeInputDTO input : gradeInputs) {
+            UserEntity student = userRepository.findById(input.getStudentId())
+                    .orElseThrow(() -> new RuntimeException("Student not found"));
+
             long totalScore = Math.round(
                     input.getMiddleScore() * middleW / 100.0 +
                             input.getFinalScore() * finalW / 100.0 +
@@ -41,9 +48,9 @@ public class GradeService {
                             input.getAttendance() * attendanceW / 100.0
             );
 
-            Grades grade = new Grades();
-            grade.setCourseId(courseId);
-            grade.setStudentId(input.getStudentId());
+            GradeEntity grade = new GradeEntity();
+            grade.setStudentId(student);   // ✅ UserEntity
+            grade.setCourseId(course);     // ✅ CourseEntity
             grade.setMiddleScore(input.getMiddleScore());
             grade.setFinalScore(input.getFinalScore());
             grade.setAssignment(input.getAssignment());
@@ -53,13 +60,12 @@ public class GradeService {
             gradesList.add(grade);
         }
 
-        // 3. totalScore 기준 정렬
+        // 정렬 및 letterGrade 부여 (생략 없이 계속 진행)
         gradesList.sort((a, b) -> Long.compare(b.getTotalScore(), a.getTotalScore()));
 
-        // 4. letterGrade 부여
         int n = gradesList.size();
         for (int i = 0; i < n; i++) {
-            Grades g = gradesList.get(i);
+            GradeEntity g = gradesList.get(i);
             double ratio = (i + 1) / (double)n;
 
             String gradeLetter;
@@ -72,8 +78,8 @@ public class GradeService {
             g.setLetterGrade(gradeLetter);
         }
 
-        // 5. 저장
         gradeRepository.saveAll(gradesList);
     }
-}
 
+
+}
