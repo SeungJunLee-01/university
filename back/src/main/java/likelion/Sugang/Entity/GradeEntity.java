@@ -19,15 +19,27 @@ public class GradeEntity {
     private Integer gradeId;
 
     @Column
-    private Integer score;
+    private Integer middleScore;
+
+    @Column
+    private Integer finalScore;
+
+    @Column
+    private Integer assignment;
+
+    @Column
+    private Integer attendance;
+
+    @Column
+    private Long totalScore;
 
     @Column
     private String letterGrade;
-
+//
     // 학생:성적 = 1:N 관계 (N 쪽)
     @ManyToOne
     @JoinColumn(name = "studentId", referencedColumnName = "userId")
-    private UserEntity userId;
+    private UserEntity studentId;
 
     // 강의:성적 = 1:N 관계 (N 쪽)
     @ManyToOne
@@ -36,10 +48,14 @@ public class GradeEntity {
 
     public GradeDTO toDTO() {
         return GradeDTO.builder()
-                .studentId(userId.getUserId())
+                .studentId(studentId.getUserId())
                 .gradeId(gradeId)
                 .courseId(courseId.getCourseId())
-                .score(score)
+                .middleScore(middleScore)
+                .finalScore(finalScore)
+                .assignment(assignment)
+                .attendance(attendance)
+                .totalScore(totalScore)
                 .letterGrade(letterGrade)
                 .build();
     }

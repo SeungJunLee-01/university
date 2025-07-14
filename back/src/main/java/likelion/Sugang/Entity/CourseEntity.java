@@ -19,8 +19,13 @@ public class CourseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer courseId;
+
+    @Column
+    private Integer courseCode;
+
     @Column
     private String courseName;
+
     @Column
     private String semester;
     @Column
@@ -34,6 +39,7 @@ public class CourseEntity {
     public CourseDTO toDTO(){
         return CourseDTO.builder()
                 .courseId(courseId)
+                .courseCode(courseCode)
                 .courseName(courseName)
                 .semester(semester)
                 .credits(credits)
@@ -41,3 +47,4 @@ public class CourseEntity {
                 .build();
     }
 }
+//

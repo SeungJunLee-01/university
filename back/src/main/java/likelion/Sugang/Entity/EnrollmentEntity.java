@@ -3,7 +3,7 @@ package likelion.Sugang.Entity;
 import jakarta.persistence.*;
 import likelion.Sugang.DTO.EnrollmentDTO;
 import lombok.*;
-
+//
 @Entity
 @Table (name = "enrollment")
 @Builder
@@ -20,7 +20,7 @@ public class EnrollmentEntity {
 
     @ManyToOne
     @JoinColumn(name = "studentId",referencedColumnName = "userId")
-    private UserEntity userId;
+    private UserEntity studentId;
 
     @ManyToOne
     @JoinColumn(name = "courseId",referencedColumnName = "courseId")
@@ -29,7 +29,7 @@ public class EnrollmentEntity {
     public EnrollmentDTO toDTO(){
         return EnrollmentDTO.builder()
                 .enrollmentId(enrollmentId)
-                .studentId(userId.getUserId())
+                .studentId(studentId.getUserId())
                 .courseId(courseId.getCourseId())
                 .build();
     }

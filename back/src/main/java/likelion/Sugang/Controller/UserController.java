@@ -1,5 +1,5 @@
 package likelion.Sugang.Controller;
-
+//
 import likelion.Sugang.DTO.UserDTO;
 import likelion.Sugang.DTO.UserLoginDTO;
 import likelion.Sugang.Service.UserService;
@@ -45,6 +45,4 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인 실패");
         }
     }
-
-
 }

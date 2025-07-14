@@ -7,6 +7,8 @@ import likelion.Sugang.DTO.UserLoginDTO;
 import likelion.Sugang.Entity.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import likelion.Sugang.Enum.UserType;
+
 
 import java.util.Optional;
 
@@ -49,7 +51,7 @@ public class UserService {
 
         UserEntity user = userOpt.get();
 
-        if (user.getType() == null || user.getType() != 1) {
+        if (user.getType() == null || user.getType() != UserType.STUDENT) {
             return null;
         }
 
@@ -61,9 +63,5 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("뭔가 잘못됨"))
                 .toDTO();
     }
-
-
-
-
-
 }
+//

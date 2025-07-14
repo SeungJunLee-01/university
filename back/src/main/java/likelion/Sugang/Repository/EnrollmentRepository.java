@@ -8,5 +8,7 @@ import java.util.List;
 
 @Repository
 public interface EnrollmentRepository extends JpaRepository <EnrollmentEntity, Long>{
-    List<EnrollmentEntity> findByUserId_UserId(Integer userId);
-}
+    List<EnrollmentEntity> findByUserId(Integer userId);
+    List<EnrollmentEntity> findByCourseId(Integer courseId);
+
+}//

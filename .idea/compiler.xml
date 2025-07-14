@@ -11,6 +11,11 @@
         <module name="Sugang.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Sugang" target="24" />
+      <module name="Sugang.main" target="24" />
+      <module name="Sugang.test" target="24" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
