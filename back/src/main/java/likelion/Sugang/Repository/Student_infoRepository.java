@@ -7,4 +7,3 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface Student_infoRepository extends JpaRepository<Student_infoEntity,Long> {
 }
-//

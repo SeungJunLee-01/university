@@ -11,4 +11,3 @@ import java.util.List;
 public interface GradeRepository extends JpaRepository<GradeEntity, CourseEntity> {
     List<GradeEntity> findByCourseId(CourseEntity courseId);
 }
-//

@@ -3,7 +3,7 @@ package likelion.Sugang.Entity;
 import jakarta.persistence.*;
 import likelion.Sugang.DTO.EnrollmentDTO;
 import lombok.*;
-//
+
 @Entity
 @Table (name = "enrollment")
 @Builder

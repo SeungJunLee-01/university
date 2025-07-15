@@ -16,4 +16,3 @@ public class Grade_distributionDTO {
     private Integer assignmentWeight;
     private Integer attendanceWeight;
 }
-//

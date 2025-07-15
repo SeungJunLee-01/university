@@ -14,4 +14,3 @@ public class EnrollmentDTO {
     private Integer courseId;
     private Integer studentId;
 }
-//
