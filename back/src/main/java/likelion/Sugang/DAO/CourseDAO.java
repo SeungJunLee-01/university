@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CourseDAO {
     private final CourseRepository courseRepository;
-    private final UserRepository userRepository; // 교수 조회를 위한 리포지토리 주입
+    private final UserRepository userRepository;
 
     public CourseDTO addCourse(String courseName, String semester, Integer credits, Integer profId) {
         UserEntity professor = userRepository.findById(profId)
@@ -24,13 +24,17 @@ public class CourseDAO {
                 .courseName(courseName)
                 .semester(semester)
                 .credits(credits)
-                .userId(professor) // 여기!
+                .userId(professor)  // 고친 부분
                 .build();
 
         return courseRepository.save(course).toDTO();
     }
 
     public List<CourseEntity> findAllByProfId(Integer profId) {
-        return courseRepository.findAllByUserId(profId);
+        UserEntity professor = userRepository.findById(profId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 교수 ID가 존재하지 않습니다: " + profId));
+
+        return courseRepository.findAllByUserId(professor);
     }
+
 }

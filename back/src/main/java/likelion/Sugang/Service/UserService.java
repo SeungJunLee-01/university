@@ -1,6 +1,5 @@
 package likelion.Sugang.Service;
 
-import jakarta.annotation.PostConstruct;
 import likelion.Sugang.DAO.UserDAO;
 import likelion.Sugang.DTO.UserDTO;
 import likelion.Sugang.DTO.UserLoginDTO;

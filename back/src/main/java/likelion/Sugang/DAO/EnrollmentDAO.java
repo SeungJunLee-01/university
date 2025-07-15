@@ -11,9 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
-//
-@Repository
 
+@Repository
 public class EnrollmentDAO {
 
     private final EnrollmentRepository enrollmentRepository;
@@ -43,7 +42,11 @@ public class EnrollmentDAO {
     }
 
     public List<EnrollmentDTO> getEnrollmentsByStudentId(Integer studentId){
-        List<EnrollmentEntity> enrollments = enrollmentRepository.findByUserId(studentId);
+        UserEntity student = userRepository.findById(studentId)
+                .orElseThrow(() -> new RuntimeException("Student not found"));
+
+        List<EnrollmentEntity> enrollments = enrollmentRepository.findByStudentId(student);
+
         return enrollments.stream()
                 .map(EnrollmentEntity::toDTO)
                 .collect(Collectors.toList());

@@ -18,4 +18,3 @@ public class CourseDTO {
     private Integer credits;
     private Integer profId;
 }
-//

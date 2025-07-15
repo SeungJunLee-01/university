@@ -12,7 +12,7 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-//
+
 public class Grade_distributionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

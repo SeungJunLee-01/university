@@ -19,4 +19,3 @@ public class UserDTO {
     private String status;
     private UserType type;
 }
-//
