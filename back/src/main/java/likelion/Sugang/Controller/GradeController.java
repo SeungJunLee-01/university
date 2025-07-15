@@ -1,5 +1,6 @@
 package likelion.Sugang.Controller;
 
+import likelion.Sugang.DTO.GradeCheckDTO;
 import likelion.Sugang.DTO.GradeInputDTO;
 import likelion.Sugang.Service.GradeService;
 import lombok.RequiredArgsConstructor;
@@ -23,5 +24,12 @@ public class GradeController {
     ) {
         gradeService.assignGradesForCourse(courseId, gradeInputs);
         return ResponseEntity.ok("Grades assigned successfully.");
+    }
+
+    //성적 확인
+    @GetMapping("/check/{studentId}")
+    public ResponseEntity<List<GradeCheckDTO>> checkGrades(@PathVariable Integer studentId) {
+        List<GradeCheckDTO> grades = gradeService.getStudentGradeChecks(studentId);
+        return ResponseEntity.ok(grades);
     }
 }

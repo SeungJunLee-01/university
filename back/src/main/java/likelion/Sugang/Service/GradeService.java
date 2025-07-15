@@ -1,6 +1,8 @@
 package likelion.Sugang.Service;
 
 import jakarta.transaction.Transactional;
+import likelion.Sugang.DAO.GradeCheckDAO;
+import likelion.Sugang.DTO.GradeCheckDTO;
 import likelion.Sugang.DTO.GradeInputDTO;
 import likelion.Sugang.Entity.CourseEntity;
 import likelion.Sugang.Entity.GradeEntity;
@@ -17,6 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor // Lombok 어노테이션으로 생성자 자동 생성
 public class GradeService {
 
+    private final GradeCheckDAO gradeCheckDAO;
     private final GradeRepository gradeRepository;
     private final Grade_distributionRepository grade_distributionRepository;
     private final UserRepository userRepository;
@@ -80,6 +83,12 @@ public class GradeService {
         }
 
         gradeRepository.saveAll(gradesList);
+    }
+
+    //성적 확인
+
+    public List<GradeCheckDTO> getStudentGradeChecks(Integer studentId) {
+        return gradeCheckDAO.getGradeChecksByStudentId(studentId);
     }
 
 
