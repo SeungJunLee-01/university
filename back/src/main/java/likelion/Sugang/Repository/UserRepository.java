@@ -13,4 +13,3 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
     List<UserEntity> findByType(UserType type);
     Optional<UserEntity> findByUserIdAndType(Integer userId, UserType type);
 }
-//

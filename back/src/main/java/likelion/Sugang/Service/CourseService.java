@@ -20,7 +20,7 @@ public class CourseService {
         return courseDAO.addCourse(courseName,semester,credits,profId);
     }
 
-    public List<CourseDTO> getAllCoursesByProfessorId(Integer profId) {
+    public List<CourseDTO> getAllCoursesByProfId(Integer profId) {
         List<CourseEntity> courses = courseDAO.findAllByProfId(profId);
         return courses.stream()
                 .map(CourseEntity::toDTO)

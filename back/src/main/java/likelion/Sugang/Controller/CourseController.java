@@ -6,9 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-//
+
 @RestController
 @RequestMapping("/api/course")
 @RequiredArgsConstructor
@@ -31,8 +30,8 @@ public class CourseController {
 
     // 교수 ID로 수업 목록 조회
     @GetMapping("/professor/{profId}")
-    public ResponseEntity<List<CourseDTO>> getCoursesByProfessorId(@PathVariable Integer profId) {
-        List<CourseDTO> courses = courseService.getAllCoursesByProfessorId(profId);
+    public ResponseEntity<List<CourseDTO>> getCoursesByProfId(@PathVariable Integer profId) {
+        List<CourseDTO> courses = courseService.getAllCoursesByProfId(profId);
         return ResponseEntity.ok(courses);
     }
 }

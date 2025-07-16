@@ -11,4 +11,3 @@ public class UserLoginDTO {
     private Integer userId;
     private String password;
 }
-//
