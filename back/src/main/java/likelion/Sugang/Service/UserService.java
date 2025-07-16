@@ -27,6 +27,7 @@ public class UserService {
         // DTO -> Entity 변환
         UserEntity userEntity = UserEntity.builder()
                 .userId(userDTO.getUserId())
+                .userNumber(userDTO.getUserNumber()) // 넘버 추가
                 .name(userDTO.getName())
                 .birth(userDTO.getBirth())
                 .sex(userDTO.getSex())
