@@ -15,23 +15,25 @@ public class CourseController {
     private final CourseService courseService;
 
     //수업 추가
-    @PostMapping
-    public ResponseEntity<CourseDTO> addCourse(@RequestParam String courseName, @RequestParam String semester, @RequestParam Integer credits, @RequestParam Integer profId) {
-        CourseDTO courseEntity = courseService.addCourse(courseName, semester, credits, profId);
+    @PostMapping("/add")
+    public ResponseEntity<CourseDTO> addCourse(@RequestParam Integer courseCode,@RequestParam String courseName, @RequestParam String semester, @RequestParam Integer credits, @RequestParam Integer userId) {
+        CourseDTO courseEntity = courseService.addCourse(courseCode,courseName, semester, credits, userId);
         return ResponseEntity.status(HttpStatus.CREATED).body(courseEntity);
     }
 
     //수업 삭제
-    @DeleteMapping
+    @DeleteMapping("/delete")
     public ResponseEntity<String> deleteCourse(@RequestParam Integer courseId) {
         courseService.deleteCourse(courseId);
         return ResponseEntity.ok("삭제 성공");
     }
 
-    // 교수 ID로 수업 목록 조회
-    @GetMapping("/professor/{profId}")
-    public ResponseEntity<List<CourseDTO>> getCoursesByProfId(@PathVariable Integer profId) {
-        List<CourseDTO> courses = courseService.getAllCoursesByProfId(profId);
+    // 교수 id로 수업 조회
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<CourseDTO>> getCoursesByProfessor(@PathVariable Integer userId) {
+        List<CourseDTO> courses = courseService.getCoursesByProfessor(userId);
         return ResponseEntity.ok(courses);
     }
+
+
 }
