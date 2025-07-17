@@ -28,6 +28,7 @@ public class CourseEntity {
 
     @Column
     private String semester;
+
     @Column
     private Integer credits;
 

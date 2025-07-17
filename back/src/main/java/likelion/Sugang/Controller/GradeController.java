@@ -16,7 +16,6 @@ public class GradeController {
 
     private final GradeService gradeService;
 
-    // POST /grades/{courseId}
     @PostMapping("/{courseId}")
     public ResponseEntity<String> assignGrades(
             @PathVariable Integer courseId,
