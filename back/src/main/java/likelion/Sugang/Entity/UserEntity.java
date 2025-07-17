@@ -3,7 +3,6 @@ package likelion.Sugang.Entity;
 import jakarta.persistence.*;
 import likelion.Sugang.DTO.UserDTO;
 import likelion.Sugang.Enum.UserType;
-
 import lombok.*;
 
 @Entity
@@ -13,6 +12,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class UserEntity {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)

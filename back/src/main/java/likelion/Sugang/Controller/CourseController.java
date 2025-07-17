@@ -25,7 +25,7 @@ public class CourseController {
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteCourse(@RequestParam Integer courseId) {
         courseService.deleteCourse(courseId);
-        return ResponseEntity.ok("삭제 성공");
+        return ResponseEntity.ok("삭제 성공");          
     }
 
     // 교수 id로 수업 조회
@@ -34,6 +34,4 @@ public class CourseController {
         List<CourseDTO> courses = courseService.getCoursesByProfessor(userId);
         return ResponseEntity.ok(courses);
     }
-
-
 }
